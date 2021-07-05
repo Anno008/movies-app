@@ -5,9 +5,9 @@ import { render } from "@testing-library/react-native";
 import App from "../App";
 
 describe("App tests", () => {
-  it("Should render", () => {
+  it("Should display movies screen on app boot", () => {
     const renderResult = render(<App />);
-    const title = renderResult.getByText("Movies App");
+    const title = renderResult.getByText("Movies Screen");
     expect(title).toBeDefined();
   });
 });
