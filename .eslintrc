@@ -1,0 +1,113 @@
+{
+  "root": true,
+  "extends": [
+    "@react-native-community",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "react",
+    "import",
+    "@typescript-eslint",
+    "jest",
+    "prettier",
+    "react-hooks"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json",
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "globals": {
+    "$": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "react/prop-types": "off",
+    "react/require-default-props": 1,
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [">", "}"]
+      }
+    ],
+    "object-shorthand": "error",
+    "import/newline-after-import": [
+      "error",
+      {
+        "count": 1
+      }
+    ],
+    "import/no-anonymous-default-export": 0,
+    "import/no-named-as-default": 0,
+    "import/order": [
+      1,
+      {
+        "newlines-between": "always-and-inside-groups",
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ]
+      }
+    ],
+    "import/namespace": "off",
+    "import/named": "off",
+    "semi": "warn",
+    "arrow-body-style": ["error", "as-needed"],
+    "no-console": 1,
+    "no-multiple-empty-lines": [
+      1,
+      {
+        "max": 1
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "no-trailing-spaces": 1,
+    "eol-last": 2,
+    "no-unused-vars": 1,
+    "react/prefer-stateless-function": 1,
+    "curly": "error",
+    "keyword-spacing": 1,
+    "linebreak-style": "off",
+    "quotes": [2, "double", "avoid-escape"],
+    "indent": "off",
+    "brace-style": [1, "1tbs"],
+    "object-curly-spacing": [2, "always"],
+    "comma-spacing": [
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "react-hooks/rules-of-hooks": "warn",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}
