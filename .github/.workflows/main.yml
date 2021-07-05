@@ -1,0 +1,34 @@
+name: Verify, build and deploy to firebase app distribution
+
+on:
+  push:
+    branches: [ development, master ]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install dependencies
+      run: 
+          yarn install
+    - name: Lint
+      run:
+          yarn lint
+    - name: TSC
+      run: 
+          yarn lint:types
+    - name: Run tests
+      run:
+          yarn test:coverage
+    - name: Allow execution (gradlew)
+      run: chmod +x ./android/gradlew
+    - name: Build Android
+      run: 
+          yarn build:android
+    - name: Install firebase
+      run:
+          yarn global add firebase-tools
+    - name: Firebase deploy (Android)
+      run:
+        firebase appdistribution:distribute ./android/app/build/outputs/apk/release/app-release.apk --app ${{ secrets.APP_ID }} --token ${{ secrets.FIREBASE_TOKEN }} --groups "QA"

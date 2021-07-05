@@ -7,6 +7,10 @@ Movies app displaying upcoming movies from TMDb
 * Editor VSCode
 * Extensions: Eslint, prettier
 
+## CI/CD
+Github actions have been configured to validate the code before deployment to firebase. It runs yarn install, lint, test, builds and publishes the apk.
+To request access to the distribution group for easier app testing follow https://appdistribution.firebase.dev/i/49ae9167880efcaf
+
 ## Getting Started
 Before running any of the scripts listed bellow, it is necessary to have all the packages installed, a.k.
 a. yarn
