@@ -52,3 +52,21 @@ export const movieFixture3: Movie = {
   vote_average: 7.9,
   vote_count: 110
 };
+
+export const movieFixture4: Movie = {
+  adult: false,
+  backdrop_path: null,
+  genre_ids: [35],
+  id: 678580,
+  original_language: "es",
+  original_title: "El mesero",
+  overview:
+    "A waiter pretends to be an important businessman in order to reach the upper class through his entrepreneurial dreams.",
+  popularity: 77.472,
+  poster_path: "/oRlYgkktpdk0TQpgXXjdfK98bZ2.jpg",
+  release_date: "2021-07-15",
+  title: "El mesero",
+  video: false,
+  vote_average: 0,
+  vote_count: 0
+};
