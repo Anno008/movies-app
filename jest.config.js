@@ -5,6 +5,11 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
     '\\.(ts|tsx)$': 'ts-jest',
   },
+  collectCoverageFrom: [
+    "src/**",
+    "!src/**/atoms/**",
+    "!src/testUtils/**",
+  ],
   globals: {
     'ts-jest': {
       babelConfig: true,
