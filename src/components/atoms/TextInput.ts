@@ -3,16 +3,17 @@ import styled from "styled-components/native";
 interface Props {
   margin?: number;
   marginVertical?: number;
-  border?: string;
   borderRadius?: string;
-  overflow?: string;
+  border?: string;
 }
 
-export const TouchableOpacity = styled.TouchableOpacity<Props>`
-  ${({ overflow }) => overflow && `overflow: ${overflow};`}
+export const TextInput = styled.TextInput<Props>`
+  padding-horizontal: 10px;
   ${({ margin }) => margin && `margin: ${margin}px;`}
   ${({ marginVertical }) =>
     marginVertical && `margin-vertical: ${marginVertical}px;`}
-  ${({ border }) => border && `border: ${border};`}
   ${({ borderRadius }) => borderRadius && `border-radius: ${borderRadius};`}
+  ${({ theme }) =>
+    `border: 1px solid ${theme.secondaryBackgroundColor || "#131414"};`}
+  ${({ theme }) => `color: ${theme.primaryTextColor};`}
 `;
