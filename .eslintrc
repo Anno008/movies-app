@@ -47,7 +47,7 @@
   },
   "rules": {
     "react/prop-types": "off",
-    "react/require-default-props": 1,
+    "react/require-default-props": 0,
     "react/no-unescaped-entities": [
       "error",
       {
@@ -106,8 +106,6 @@
         "before": false,
         "after": true
       }
-    ],
-    "react-hooks/rules-of-hooks": "warn",
-    "react-hooks/exhaustive-deps": "warn"
+    ]
   }
 }
