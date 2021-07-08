@@ -1,5 +1,6 @@
 import React from "react";
-import { act, fireEvent } from "@testing-library/react-native";
+import { act, fireEvent, waitFor } from "@testing-library/react-native";
+import Toast from "react-native-toast-message";
 
 import { moviesDataFixture } from "testUtils/fixtures/moviesDataFixture";
 import { movieFixture1 } from "testUtils/fixtures/movieFixture";
@@ -7,6 +8,15 @@ import { renderWithContext } from "testUtils/renderWithContext";
 import locators from "testUtils/locators";
 
 import MoviesScreen from "../MoviesScreen";
+
+const mockedNavigate = jest.fn();
+
+jest.mock("@react-navigation/native", () => ({
+  ...jest.requireActual("@react-navigation/native"),
+  useNavigation: () => ({
+    navigate: mockedNavigate
+  })
+}));
 
 const mockFetchUpcomingMovies = jest.fn();
 jest.mock("api/services/movieService", () => ({
@@ -16,12 +26,11 @@ jest.mock("api/services/movieService", () => ({
 describe("MoviesScreen tests", () => {
   beforeEach(() => {
     mockFetchUpcomingMovies.mockClear();
-  });
-  it("Should call fetchUpcomingMovies on mount and display movies", async () => {
     mockFetchUpcomingMovies.mockImplementation(() =>
       Promise.resolve(moviesDataFixture)
     );
-
+  });
+  it("Should call fetchUpcomingMovies on mount and display movies", async () => {
     const { findByText } = renderWithContext(<MoviesScreen />);
     const movieTitle = await findByText(movieFixture1.title);
 
@@ -30,10 +39,6 @@ describe("MoviesScreen tests", () => {
   });
 
   it("Should call fetchUpcomingMovies on pull to refresh", async () => {
-    mockFetchUpcomingMovies.mockImplementation(() =>
-      Promise.resolve(moviesDataFixture)
-    );
-
     const { findByTestId } = renderWithContext(<MoviesScreen />);
     await act(async () => {
       const flatList = await findByTestId(locators.moviesScreenList);
@@ -71,10 +76,6 @@ describe("MoviesScreen tests", () => {
     expect(mockFetchUpcomingMovies).toHaveBeenNthCalledWith(2, 2);
   });
   it("Should not call fetchUpcomingMovies when end of the list is reached and there are no more pages", async () => {
-    mockFetchUpcomingMovies.mockImplementation(() =>
-      Promise.resolve(moviesDataFixture)
-    );
-
     const { findByTestId } = renderWithContext(<MoviesScreen />);
     await act(async () => {
       const flatList = await findByTestId(locators.moviesScreenList);
@@ -84,21 +85,46 @@ describe("MoviesScreen tests", () => {
     expect(mockFetchUpcomingMovies).toHaveBeenCalledTimes(1);
   });
 
-  it("Should console.log on error", async () => {
+  it("Should not call fetchUpcomingMovies when end of the list is reached and data is undefined", async () => {
+    mockFetchUpcomingMovies.mockImplementation(() =>
+      Promise.resolve(undefined)
+    );
+    const { findByTestId } = renderWithContext(<MoviesScreen />);
+    await act(async () => {
+      const flatList = await findByTestId(locators.moviesScreenList);
+      fireEvent(flatList, "onEndReached");
+    });
+
+    expect(mockFetchUpcomingMovies).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should show toast on error", async () => {
     const error = "An error happened";
     mockFetchUpcomingMovies.mockImplementation(() =>
       Promise.reject(new Error(error))
     );
 
-    const consoleLogSpy = jest
-      .spyOn(global.console, "log")
-      .mockImplementation();
+    const toastSpy = jest.spyOn(Toast, "show");
+    renderWithContext(<MoviesScreen />);
+
+    await waitFor(() => {
+      expect(toastSpy).toHaveBeenCalledWith({
+        text1: "Failed to fetch movies",
+        text2: error,
+        type: "error"
+      });
+    });
+  });
+
+  it("Should navigate to new screen on search button press", async () => {
     const { findByTestId } = renderWithContext(<MoviesScreen />);
 
-    const flatList = await findByTestId(locators.moviesScreenList);
+    const navigateButton = await findByTestId(
+      locators.searchMoviesNavigationButton
+    );
 
-    expect(flatList).toBeDefined();
+    fireEvent.press(navigateButton);
 
-    expect(consoleLogSpy).toHaveBeenCalledWith(error);
+    expect(mockedNavigate).toHaveBeenCalledWith("MoviesSearch");
   });
 });
