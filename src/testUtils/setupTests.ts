@@ -1,5 +1,11 @@
 jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
-
+jest.mock("@react-navigation/native", () => ({
+  ...jest.requireActual("@react-navigation/native"),
+  useNavigation: () => ({
+    navigate: jest.fn()
+  })
+}));
+jest.mock("react-native-toast-message");
 // Global fetch mock as to prevent real fetch calls during test runs
 // for individual test cases where we want to assert the behavior depending
 // on the response data it is necessary to manually mock fetch per test unit
