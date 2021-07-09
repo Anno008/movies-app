@@ -1,11 +1,11 @@
-import { ApiConfig } from "api/apiCall";
+import { FetchConfig } from "api/apiCall";
 import { genreDataFixture } from "testUtils/fixtures/genreFixture";
 
 import { fetchGenres } from "../genresService";
 
 const mockGetJson = jest.fn();
 jest.mock("../../apiCall.ts", () => ({
-  getJSON: (config: ApiConfig) => mockGetJson(config)
+  getJSON: (config: FetchConfig) => mockGetJson(config)
 }));
 
 describe("genresService tests", () => {

@@ -1,12 +1,12 @@
 import { apiKey, apiUrl } from "constants/config";
 
-export interface ApiConfig {
+export interface FetchConfig {
   url: string;
   method?: "GET" | "POST" | "PUT" | "DELETE";
   body?: BodyInit_;
 }
 
-export const getJSON = <T>(config: ApiConfig): Promise<T> =>
+export const getJSON = <T>(config: FetchConfig): Promise<T> =>
   fetch(`${apiUrl}/${config.url}&api_key=${apiKey}`, {
     body: config.body,
     headers: createHeader(),

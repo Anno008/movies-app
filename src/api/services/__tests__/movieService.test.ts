@@ -1,4 +1,4 @@
-import { ApiConfig } from "api/apiCall";
+import { FetchConfig } from "api/apiCall";
 import { movieDetailsFixture } from "testUtils/fixtures/movieDetailsFixture";
 import { moviesDataFixture } from "testUtils/fixtures/moviesDataFixture";
 
@@ -10,7 +10,7 @@ import {
 
 const mockGetJson = jest.fn();
 jest.mock("../../apiCall.ts", () => ({
-  getJSON: (config: ApiConfig) => mockGetJson(config)
+  getJSON: (config: FetchConfig) => mockGetJson(config)
 }));
 
 describe("movieService tests", () => {
