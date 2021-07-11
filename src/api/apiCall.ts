@@ -6,11 +6,11 @@ export interface FetchConfig {
   body?: BodyInit_;
 }
 
-export const getJSON = <T>(config: FetchConfig): Promise<T> =>
-  fetch(`${apiUrl}/${config.url}&api_key=${apiKey}`, {
-    body: config.body,
+export const getJSON = <T>({ url, body, method }: FetchConfig): Promise<T> =>
+  fetch(`${apiUrl}/${url}${url.includes("?") ? "&" : "?"}api_key=${apiKey}`, {
+    body,
     headers: createHeader(),
-    method: config.method || "GET"
+    method: method || "GET"
   }).then(response => response.json());
 
 const createHeader = (): HeadersInit_ => ({

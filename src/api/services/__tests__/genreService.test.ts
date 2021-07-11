@@ -19,7 +19,7 @@ describe("genresService tests", () => {
 
     expect(response).toStrictEqual(genreDataFixture);
     expect(mockGetJson).toHaveBeenCalledWith({
-      url: "genre/movie/list?"
+      url: "genre/movie/list"
     });
   });
 });

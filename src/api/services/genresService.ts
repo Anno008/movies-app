@@ -3,5 +3,5 @@ import { GenreData } from "types";
 
 export const fetchGenres = (): Promise<GenreData> =>
   getJSON<GenreData>({
-    url: "genre/movie/list?"
+    url: "genre/movie/list"
   });

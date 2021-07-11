@@ -16,5 +16,5 @@ export const searchMovies = (
 
 export const getMovieById = (id: number): Promise<MovieDetails> =>
   getJSON<MovieDetails>({
-    url: `movie/${id}?`
+    url: `movie/${id}`
   });

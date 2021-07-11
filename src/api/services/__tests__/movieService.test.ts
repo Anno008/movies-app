@@ -46,7 +46,7 @@ describe("movieService tests", () => {
 
     expect(response).toStrictEqual(movieDetailsFixture);
     expect(mockGetJson).toHaveBeenCalledWith({
-      url: "movie/1?"
+      url: "movie/1"
     });
   });
 });
