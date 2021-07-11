@@ -56,12 +56,14 @@ const MovieCard = ({
           flexStretch="1"
           justifyContent="space-between">
           <Grid backgroundColor="transparent">
-            <Typography bold fontSize="20px" textShadow>
+            <Typography bold fontSize="20px" applyTextShadow>
               {title}
             </Typography>
-            <Typography fontSize="16px">{combinedGenreNames}</Typography>
+            <Typography fontSize="16px" applyTextShadow>
+              {combinedGenreNames}
+            </Typography>
           </Grid>
-          <Typography bold fontSize="20px" alignSelf="flex-end">
+          <Typography bold fontSize="20px" alignSelf="flex-end" applyTextShadow>
             {release_date}
           </Typography>
         </Grid>

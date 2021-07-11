@@ -5,6 +5,7 @@ declare module "styled-components" {
     primaryTextColor: string;
     primaryBackgroundColor: string;
     secondaryBackgroundColor: string;
+    textShadow: string;
   }
 
   declare interface StyledFlatList {

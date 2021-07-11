@@ -6,6 +6,7 @@ interface Props {
   color?: string;
   textShadow?: boolean;
   alignSelf?: string;
+  applyTextShadow?: boolean;
 }
 
 export const Typography = styled.Text<Props>`
@@ -13,4 +14,10 @@ export const Typography = styled.Text<Props>`
   ${({ bold }) => bold && "font-weight: bold;"}
   ${({ fontSize }) => fontSize && `font-size: ${fontSize};`}
   ${({ color, theme }) => `color: ${color ? color : theme.primaryTextColor};`}
+  ${({ applyTextShadow, theme }) =>
+    applyTextShadow &&
+    `
+      text-shadow: 0px 0px ${theme.textShadow || "#131414"};
+      text-shadow-radius: 8px;
+  `}
 `;
