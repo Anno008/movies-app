@@ -4,7 +4,7 @@ interface TestProps {
 }
 
 export const setTestId = (id: string): TestProps | undefined => {
-  if (process.env.TEST) {
+  if (process.env.TESTS) {
     return {
       testID: id,
       accessibilityLabel: id

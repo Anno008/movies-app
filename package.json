@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "cross-env TEST=true jest ./src",
+    "test": "cross-env TESTS=true jest ./src",
     "test:coverage": "yarn test --coverage",
     "test:coverage:open": "opener ./coverage/lcov-report/index.html",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
