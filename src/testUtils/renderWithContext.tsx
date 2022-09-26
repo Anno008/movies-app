@@ -13,7 +13,7 @@ export const renderWithContext = (children: ReactNode): RenderAPI =>
     <GenreContext.Provider value={genreDataFixture.genres}>
       <ThemeProvider theme={DarkTheme}>
         {children}
-        <Toast ref={ref => Toast.setRef(ref)} />
+        <Toast />
       </ThemeProvider>
     </GenreContext.Provider>
   );

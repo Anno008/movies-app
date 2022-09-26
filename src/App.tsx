@@ -11,7 +11,7 @@ const App = (): JSX.Element => (
   <GenreProvider>
     <ThemeProvider theme={DarkTheme}>
       <AppNavigation />
-      <Toast ref={ref => Toast.setRef(ref)} />
+      <Toast />
     </ThemeProvider>
   </GenreProvider>
 );

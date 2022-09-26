@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import { useTheme } from "styled-components";
 import { useNavigation } from "@react-navigation/native";
+
+import { StackNavigationProp } from "@react-navigation/stack";
 
 import {
   Grid,
@@ -14,15 +16,17 @@ import { setTestId } from "testUtils/setTestId";
 import locators from "testUtils/locators";
 import { deviceWidth } from "device/getSize";
 import { GenreContext } from "contexts/GenreContext/GenreContext";
+import { RootStackParamList } from "navigation/AppNavigation";
 
-const MovieCard = ({
+const MovieCard: FC<Movie> = ({
   id,
   title,
   release_date,
   backdrop_path,
   genre_ids,
   poster_path
-}: Movie): JSX.Element => {
+}) => {
+  const { navigate } = useNavigation<StackNavigationProp<RootStackParamList>>();
   const theme = useTheme();
   const genres = useContext(GenreContext);
   const imageWidth = Math.ceil(deviceWidth / 100) * 100;
@@ -31,7 +35,6 @@ const MovieCard = ({
     .map(x => x.name)
     .join(", ");
 
-  const { navigate } = useNavigation();
   return (
     <TouchableOpacity
       marginVertical={10}

@@ -7,6 +7,12 @@ import MoviesScreen from "screens/MoviesScreen";
 import MoviesSearchScreen from "screens/MoviesSearchScreen";
 import MovieDetailsScreen from "screens/MovieDetailsScreen/MovieDetailsScreen";
 
+export type RootStackParamList = {
+  MovieDetails: { id: number };
+  MoviesSearch: undefined;
+  Movies: undefined;
+};
+
 const Stack = createStackNavigator();
 
 const AppNavigation = (): JSX.Element => {
@@ -18,7 +24,7 @@ const AppNavigation = (): JSX.Element => {
         screenOptions={{
           animationEnabled: false,
           headerStyle: {
-            backgroundColor: theme.secondaryBackgroundColor,
+            backgroundColor: theme.headerBackgroundColor,
             elevation: 0,
             shadowOpacity: 0
           },

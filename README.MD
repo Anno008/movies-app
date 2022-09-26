@@ -36,6 +36,11 @@ a. yarn
 * testing-library/react-native -> testing library for react components
 
 ## Screenshots
-![Upcoming Movies](./screenshots/UpcomingMovies.jpg "Upcoming Movies")
-![Search Movies](./screenshots/SearchMovies.jpg "Search Movies")
-![Movie Details](./screenshots/MovieDetails.jpg "Movie Details")
+### Android
+![Upcoming Movies](./screenshots/android/UpcomingMovies.jpg "Upcoming Movies")
+![Search Movies](./screenshots/android/SearchMovies.jpg "Search Movies")
+![Movie Details](./screenshots/android/MovieDetails.jpg "Movie Details")
+### IOS
+![Upcoming Movies](./screenshots/ios/UpcomingMovies.png "Upcoming Movies")
+![Search Movies](./screenshots/ios/SearchMovies.png "Search Movies")
+![Movie Details](./screenshots/ios/MovieDetails.png "Movie Details")
