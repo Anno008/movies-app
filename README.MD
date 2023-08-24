@@ -16,7 +16,7 @@ Before running any of the scripts listed bellow, it is necessary to have all the
 a. yarn
 
 * Scripts:
-  * yarn start -> starts the development server. However, it wont have an api key, therefore, I suggest the following command: npx cross-env API_KEY={API_KEY} yarn start
+  * yarn start -> starts the development server. However, it wont have an api key, therefore, I suggest the following command: `npx cross-env API_KEY={API_KEY} yarn start`
   * yarn test -> runs the unit tests.
   * yarn test:coverage -> prints out the coverage in the terminal and generates the report.
   * yarn test:coverage:open -> displays the code coverage in a browser.

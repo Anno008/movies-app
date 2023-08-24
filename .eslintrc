@@ -1,7 +1,7 @@
 {
   "root": true,
   "extends": [
-    "@react-native-community",
+    "@react-native",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
