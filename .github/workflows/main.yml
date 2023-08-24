@@ -35,4 +35,4 @@ jobs:
           yarn global add firebase-tools
     - name: Firebase deploy (Android)
       run:
-        firebase appdistribution:distribute ./android/app/build/outputs/apk/release/app-release.apk --app ${{ secrets.APP_ID }} --token ${{ secrets.FIREBASE_TOKEN }} --groups "QA"
+        firebase appdistribution:distribute ./android/app/build/outputs/apk/release/app-release.apk --app ${{ secrets.APP_ID }} --serviceCredentialsFileContent ${{ secrets.CREDENTIAL_FILE_CONTENT }} --groups "QA"
