@@ -9,6 +9,7 @@ interface Props {
 
 export const TextInput = styled.TextInput<Props>`
   padding-horizontal: 10px;
+  min-height: 40px;
   ${({ margin }) => margin && `margin: ${margin}px;`}
   ${({ marginVertical }) =>
     marginVertical && `margin-vertical: ${marginVertical}px;`}

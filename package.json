@@ -25,6 +25,7 @@
     "react-native-safe-area-context": "^4.3.4",
     "react-native-screens": "^3.17.0",
     "react-native-toast-message": "^2.1.5",
+    "react-native-vector-icons": "^10.0.0",
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
@@ -40,6 +41,7 @@
     "@types/node": "^18.7.20",
     "@types/react": "^18.0.24",
     "@types/react-native": "^0.70.3",
+    "@types/react-native-vector-icons": "^6.4.14",
     "@types/react-test-renderer": "^18.0.0",
     "@types/styled-components": "^5.1.11",
     "@types/styled-components-react-native": "^5.1.1",

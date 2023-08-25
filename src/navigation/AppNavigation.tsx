@@ -6,6 +6,7 @@ import { useTheme } from "styled-components";
 import MoviesScreen from "screens/MoviesScreen";
 import MoviesSearchScreen from "screens/MoviesSearchScreen";
 import MovieDetailsScreen from "screens/MovieDetailsScreen/MovieDetailsScreen";
+import ThemeSwitch from "components/ThemeSwitch/ThemeSwitch";
 
 export type RootStackParamList = {
   MovieDetails: { id: number };
@@ -14,7 +15,6 @@ export type RootStackParamList = {
 };
 
 const Stack = createStackNavigator();
-
 const AppNavigation = (): JSX.Element => {
   const theme = useTheme();
 
@@ -22,7 +22,8 @@ const AppNavigation = (): JSX.Element => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          animationEnabled: false,
+          headerRight: ThemeSwitch,
+          animationEnabled: true,
           headerStyle: {
             backgroundColor: theme.headerBackgroundColor,
             elevation: 0,

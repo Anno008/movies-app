@@ -1,18 +1,16 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 import Toast from "react-native-toast-message";
 
 import GenreProvider from "contexts/GenreContext/GenreProvider";
-import { DarkTheme } from "theme/DarkTheme";
 import AppNavigation from "navigation/AppNavigation";
+import { AppThemeProvider } from "contexts/AppTheme/AppThemeProvider";
 
-// Bootstrapper
 const App = (): JSX.Element => (
   <GenreProvider>
-    <ThemeProvider theme={DarkTheme}>
+    <AppThemeProvider>
       <AppNavigation />
       <Toast />
-    </ThemeProvider>
+    </AppThemeProvider>
   </GenreProvider>
 );
 
